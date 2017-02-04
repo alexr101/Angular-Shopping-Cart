@@ -1,0 +1,33 @@
+<div id="modal-cart" ng-if="cartVisible">
+
+	<div class="cart-column">
+		<div class="left">
+			<p class="title">Item</p>
+		</div>
+		<div class="center">
+			<p class="title">Price</p>
+		</div>
+		<div class="right">
+			<p class="title">Qty</p>
+		</div>
+	</div>
+	<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
+	<div ng-repeat="item in getItemsInCart()">
+		<div class="cart-column">
+			<div class="left">
+				<p class="title">{{item.title}}</p>
+			</div>
+			<div class="center">
+				<p class="title">{{item.price</p>
+			</div>
+			<div class="right">
+				<p class="title">{{item.qty}}</p>
+			</div>
+		</div>
+	</div>
+
+	<p><span class="title">Total:</span>{{total}}</p>
+	
+	<button>Clear</button>
+	<button ng-click="toggleModalCart()">Close</button>
+</div>

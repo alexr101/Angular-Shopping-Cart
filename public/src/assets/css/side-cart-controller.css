@@ -1,0 +1,13 @@
+/* Side Cart Controller */
+#side-cart-controller{
+	text-align: center;
+	display: inline-block;
+	width: 25%;
+	vertical-align: top;
+}
+
+/* Cart Button */
+#side-view-cart-btn{
+	width: 60%;
+	height: 100px;
+}
