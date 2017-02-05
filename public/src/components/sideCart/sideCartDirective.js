@@ -14,7 +14,7 @@ angular
   		replace: false,
   		templateUrl: "shared/widgets/modalCart.html",
   		link: function(scope, elem, attrs){
-  			elem.bind
+  			//elem.bind
   			return console.log("hello");
   		}
   	}

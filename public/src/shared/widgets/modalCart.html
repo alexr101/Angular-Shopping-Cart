@@ -1,36 +1,40 @@
 <div id="modal-cart" ng-if="cartVisible">
-	<!-- c-row to not interfere with bootstrap classes -->
-	<div class="row">
-		<div class="left">
-			<p class="title">Item</p>
-		</div>
-		<div class="center">
-			<p class="title">Price</p>
-		</div>
-		<div class="right">
-			<p class="title">Qty</p>
-		</div>
-		<div>
-		</div>
-	</div>
-	<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
-	<div ng-repeat="item in items">
+	<div ng-if="cartEmpty()==false">
+		<!-- c-row to not interfere with bootstrap classes -->
 		<div class="row">
 			<div class="left">
-				<p class="title">{{item.type}}</p>
+				<p class="title">Item</p>
 			</div>
 			<div class="center">
-				<p class="title">{{item.price}}</p>
+				<p class="title">Price</p>
 			</div>
 			<div class="right">
-				<p class="title">{{item.qty}}</p>
+				<p class="title">Qty</p>
 			</div>
-			<div><button ng-click=removeItem(item)>Remove</button></div>
+			<div>
+			</div>
 		</div>
-	</div>
-
-	<p><span class="title">Total:</span>{{total}}</p>
+		<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
+		<div ng-repeat="item in items">
+			<div class="row">
+				<div class="left">
+					<p class="title">{{item.type}}</p>
+				</div>
+				<div class="center">
+					<p class="title">{{item.price}}</p>
+				</div>
+				<div class="right">
+					<p class="title">{{item.qty}}</p>
+				</div>
+				<div><button ng-click=removeItem(item)>Remove</button></div>
+			</div>
+		</div>
 	
-	<button>Clear</button>
+		<p><span class="title">Total:</span>{{getTotal()}}</p>
+	</div>
+	<div ng-if="cartEmpty()"> 
+		<p id="cart-empty-msg">{{cartEmptyMsg}}</p>
+	</div>
+	<button ng-click="emptyCart()">Clear</button>
 	<button ng-click="toggleModalCart()">Close</button>
 </div>

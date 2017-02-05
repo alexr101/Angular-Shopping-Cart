@@ -4,26 +4,25 @@ angular
 	.module("app")
 
 	.controller("SideCartController", function($scope, $http, shoppingCart, inventoryData){
-
-		inventoryData.get().$promise.then(function(value) {
-			$scope.inventory = value.chocolates;
-		});
-
 		
-		$scope.cartVisible = false;
-
-		$scope.toggleModalCart = function(){
-			$scope.cartVisible = !$scope.cartVisible;
-		}
-
+		//Array of items currently in cart
 		$scope.items = shoppingCart.getItemsInCart();
-
+		
+		//Determines whether the cart is visible in the view
+		$scope.cartVisible = false;
+		
+		$scope.getTotal = shoppingCart.getTotal;
 		$scope.removeItem = shoppingCart.removeItem;
 		$scope.getItemCount = shoppingCart.getItemCount;
-		$scope.getItemsInCart = shoppingCart.getItemsInCart;
+		
+		//Toggles cart visibility
+		$scope.toggleModalCart = function(){
+			$scope.cartVisible = !$scope.cartVisible;
+		};
 
-		console.log($scope.getItemsInCart())
+		$scope.cartEmpty = shoppingCart.isEmpty;
+		$scope.cartEmptyMsg = shoppingCart.cartEmptyMsg();
 
-
+		
 
 	});

@@ -4,4 +4,6 @@ var app = express();
 app.use(express.static('public'));
 app.use(express.static('public/build'))
 
-app.listen(3000);
+//Local environment
+var port = process.env.PORT ? process.env.PORT : 3000;
+app.listen(port);
