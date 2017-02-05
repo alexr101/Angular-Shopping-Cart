@@ -1,6 +1,6 @@
 <div id="modal-cart" ng-if="cartVisible">
-
-	<div class="cart-column">
+	<!-- c-row to not interfere with bootstrap classes -->
+	<div class="row">
 		<div class="left">
 			<p class="title">Item</p>
 		</div>
@@ -10,19 +10,22 @@
 		<div class="right">
 			<p class="title">Qty</p>
 		</div>
+		<div>
+		</div>
 	</div>
 	<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
-	<div ng-repeat="item in getItemsInCart()">
-		<div class="cart-column">
+	<div ng-repeat="item in items">
+		<div class="row">
 			<div class="left">
-				<p class="title">{{item.title}}</p>
+				<p class="title">{{item.type}}</p>
 			</div>
 			<div class="center">
-				<p class="title">{{item.price</p>
+				<p class="title">{{item.price}}</p>
 			</div>
 			<div class="right">
 				<p class="title">{{item.qty}}</p>
 			</div>
+			<div><button ng-click=removeItem(item)>Remove</button></div>
 		</div>
 	</div>
 

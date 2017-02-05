@@ -63,13 +63,12 @@ angular
 
 		//Add an item to the cart, and update the count
 		function addItem(item){
-
-			items.push(item);
+			if(!item.qty) items.push(item);
 
 			addItemQty(item);
 			adjustBalance(item.price)
 			adjustCount(1);
-			console.log(balance)
+			console.log("balance" + balance)
 		}
 
 		//Removes and item from cart, and readjusts balance
@@ -78,9 +77,16 @@ angular
 			//Make sure cart is not empty
 			if(!isEmpty()){
 
+				//get the amount of items of this kind
+				var itemQty = item.qty;
+
 				//Remove the item 
-				items.splice(item.indexOf(), 1);
-				adjustCount(-1);
+				items.splice(items.indexOf(item), 1);
+
+				console.log(items)
+
+				//remove all the items of this kind from cart count
+				adjustCount(item.qty * -1);
 			}
 		}
 

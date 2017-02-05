@@ -4,3 +4,11 @@ body{
 	background-color: #ff5050;
 }
 
+
+/* General classes */
+
+/* Make sure all divs inside the column element are inline */
+.row > *{
+	display: inline-block;
+}
+

@@ -6,7 +6,7 @@ angular
 	.controller("SideCartController", function($scope, $http, shoppingCart, inventoryData){
 
 		inventoryData.get().$promise.then(function(value) {
-			$scope.items = value.chocolates;
+			$scope.inventory = value.chocolates;
 		});
 
 		
@@ -16,6 +16,9 @@ angular
 			$scope.cartVisible = !$scope.cartVisible;
 		}
 
+		$scope.items = shoppingCart.getItemsInCart();
+
+		$scope.removeItem = shoppingCart.removeItem;
 		$scope.getItemCount = shoppingCart.getItemCount;
 		$scope.getItemsInCart = shoppingCart.getItemsInCart;
 

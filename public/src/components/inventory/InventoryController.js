@@ -11,7 +11,7 @@ angular
 	.controller("InventoryController", function($scope, $http, shoppingCart, inventoryData){
 
   	inventoryData.get().$promise.then(function(value) {
-			$scope.items = value.chocolates;
+			$scope.inventory = value.chocolates;
 		});
     
     $scope.addItem = shoppingCart.addItem;
