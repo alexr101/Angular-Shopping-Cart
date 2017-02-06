@@ -2,49 +2,75 @@
 
 #inventory-controller{
 	background-color: #FFF;
-	padding: 20px 10% 0 10%;
-	width: 70%;
+	padding: 0px 10px;
+	width: 100%;
 	display: inline-block;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+#inventory:first-child{
+	margin-top: 10px;
+}
+
+#inventory:last-child{
+	margin-bottom: 50px;
+}
+
 /* Shopping Controller - Content - General */
 
 .item{
-	font-size: 1rem;
-	border: 1px solid rgba(0,0,0,.1);
-	padding: 10px;
-	display: flex; /*Needed to get rid of automatic inline element gaps in children elements */
-}
-
-button{
 	display: inline-block;
+	font-size: 1rem;
+	border: 1px solid rgba(0,0,0,.2);
+	padding: 10px;
+	margin: 8px 0;
 }
 
 .title{
 	font-weight: bold;
 }
 
-/* Shopping Controller - Content - Sections */
-
-.item-left,
-.item-center,
-.item-right{
-	display: inline-block;
+#item-description{
+	margin-bottom: 0;
 }
 
-.item-left{
-	width: 65%;
+/* Shopping Controller - Content - Rows */
+.item .item-col{
+	margin: 0;
+	vertical-align: top;
 }
 
-.item-center{
-	width: 20%;
-	text-align: center;
+.item-col p{
+	margin-top: 0;
 }
 
-.item-right{
-	width: 15%;
+.item-col button{
+	width: 80px;
+	float: right;
 }
+
+@media (min-width:768px){
+
+	.item{
+		margin-top: 0px;
+	}
+	
+	#inventory:first-child{
+		margin-top: 0;
+	}
+
+	#inventory-controller{
+		width: 70%;
+		padding: 0px 10%;
+	}
+}
+
+@media (min-width:1200px){
+	.item-col button{
+		width: 100px;
+	}
+}
+
 

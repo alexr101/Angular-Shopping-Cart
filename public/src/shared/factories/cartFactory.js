@@ -13,15 +13,15 @@ angular
 
 		// Internal functions
 
-		// Adds $ amount to current shopping cart total
+		// Adds or subs amount to current shopping cart total
 		// will take positive and negative values from other methods	
 		function adjustTotal(amount){
 			if(total > -1) total = total + amount;
 		}
 
-		// Add amt to the item count
-		function adjustCount(amt){
-			itemCount = itemCount + amt;
+		// Add or subt amt to the item count
+		function adjustCount(amount){
+			itemCount = itemCount + amount;
 		}
 
 
@@ -41,13 +41,20 @@ angular
 			return itemCount;
 		}
 		
-		//Get the balance total for the cart contents
+		// Get the balance total in double type
+		// Use this for calculations
 		function getTotal(){
 			return total;
 		}
+
+		// Get the balance total in string type
+		// Use this for display purposes
+		function getStringTotal(){
+			return dollarRound(total);
+		}
 		
 		function cartEmptyMsg(){
-			return "This cart is empty";
+			return "There are no items in your cart";
 		}
 
 		// Remove all items from cart and adjust the count
@@ -55,13 +62,9 @@ angular
 			var itemsLength = items.length;
 			
 			for(var i = items.length-1; i > -1; i--){
-				console.log(items)
 				var item = items[i];
-				console.log(item);
 				removeItem(item);
 			}
-			//adjustCount((items.length-1)*-1);
-			//items = [];
 		}
 
 		function isEmpty(){
@@ -106,8 +109,16 @@ angular
 			}
 		}
 
+		// Rounds decimal numbers to two decimal places
+		// Note: Returns string
+		function dollarRound(num){
+			return num.toFixed(2);
+		}
+
 		return {			
 			getMsg: getMsg,
+			getTotal: getTotal,
+			getStringTotal, getStringTotal,
 			getItemsInCart: getItemsInCart,
 			getItemCount: getItemCount,
 			addItem: addItem,
@@ -115,6 +126,7 @@ angular
 			isEmpty: isEmpty,
 			emptyCart: emptyCart,
 			cartEmptyMsg: cartEmptyMsg,
+			dollarRound: dollarRound,
 		};
 
 	});

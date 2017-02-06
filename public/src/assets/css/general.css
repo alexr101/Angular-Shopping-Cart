@@ -1,14 +1,44 @@
-/* General */
+/* General Classes */
 body{
 	position: relative;
-	background-color: #ff5050;
+	background-color: #FFF;
 }
 
-
-/* General classes */
-
-/* Make sure all divs inside the column element are inline */
-.row > *{
-	display: inline-block;
+h1, h2, h3, h4{
+	margin-top: 10px;
 }
+
+button{
+	background-color: #FF5050;
+	border: 2px solid #ff3333;
+	color: #FFF;
+	padding: 3px;
+}
+
+button:hover{
+	background-color: #ff3333;
+	border: 2px solid #ff1a1a;
+}
+
+button:active{
+	background-color: #e60000;
+	border: 2px solid #cc0000;
+}
+
+button:focus{
+	outline: none;
+}
+
+/* Every page */
+
+.page-content{
+	margin-top: 0px;
+}
+
+@media(min-width:768px){
+	.page-content{
+		margin-top: 20px;
+	}
+}
+
 

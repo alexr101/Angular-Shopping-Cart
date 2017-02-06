@@ -6,7 +6,7 @@
  */
 angular
 	.module("app")
-	.directive("addToCartBtn", function(){
+	.directive("modalCart", function(){
 
   	return{
   		restrict: "E",
@@ -15,7 +15,7 @@ angular
   		templateUrl: "shared/widgets/modalCart.html",
   		link: function(scope, elem, attrs){
   			//elem.bind
-  			return console.log("hello");
+  			//return 
   		}
   	}
 	});

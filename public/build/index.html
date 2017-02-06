@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  ng-app="app">
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Stride code test</title>
 
     <!-- Stylesheet -->
@@ -21,21 +22,17 @@
       <div id="header">
         <h1 id="company-name">Stride NYC</h1>
       </div>
+      <div class="page-content">
 
-      <div ng-controller="InventoryController" id="inventory-controller">
-        <div ui-view="inventory"></div>
+        <div ng-controller="SideCartController" id="side-cart-controller">
+            <div ui-view="sideCart"></div>
+        </div>  
+
+        <div ng-controller="InventoryController" id="inventory-controller">
+          <div ui-view="inventory"></div>
+        </div>
+        
       </div>
-
-      <div ng-controller="SideCartController" id="side-cart-controller">
-  				<div ui-view="sideCart"></div>
-      </div>	
-
-
-    <!--   <div class="menu" ng-controller="menuController">
-          <p>Hey there</p>
-      </div> -->
-
-
       
     </div>
   	

@@ -12,16 +12,16 @@ angular
 
   	inventoryData.get().$promise.then(function(value) {
 			$scope.inventory = value.chocolates;
-			fixDecimalPrices($scope.inventory, "price");
+
+			// Convert all price properties to have 2 decimals 
+			// Place them inside new object property to avoid further
+			// conversion work
+			for(var i = 0; i < $scope.inventory.length; i++){
+				$scope.inventory[i]["priceString"] = shoppingCart.dollarRound($scope.inventory[i]["price"]);
+			}	
 		});
 		
-	function fixDecimalPrices(arr, prop){
-		for(var i = 0; i < arr.length; i++){
-			var item = arr[i].price;
-			item["price"] = item["price"].toFixed(2);
-		}
-	};
-    
+	    
     $scope.addItem = shoppingCart.addItem;
     $scope.getItemCount = shoppingCart.getItemCount;
 	});

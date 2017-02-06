@@ -2,12 +2,32 @@
 #side-cart-controller{
 	text-align: center;
 	display: inline-block;
-	width: 25%;
+	width: 100%;
 	vertical-align: top;
 }
 
 /* Cart Button */
 #side-view-cart-btn{
-	width: 60%;
-	height: 100px;
+	display: inline-block;
+	width: 100%;
+	height: 60px;
+	padding: 3px;
+}
+
+@media(min-width:768px){
+	#side-cart-controller{
+		width: 25%;
+		float: right;
+	}
+	#side-view-cart-btn{
+		width: auto;
+		padding: 10px 20px;
+	}
+}
+
+@media(min-width: 1200px){
+	#side-view-cart-btn{
+		height: 80px;
+		padding: 15px 25px;
+	}
 }

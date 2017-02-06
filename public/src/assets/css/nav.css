@@ -1,6 +1,11 @@
 /* Main Header */
 #company-name{
-	width: 100%;
+	margin: 0;
+	padding: 10px;
+	width: calc(100% - 20px);
+	width: -webkit-calc(100% - 20px);
+	width: -moz-calc(100% - 20px);
 	color: white;
 	text-align: center;
+	background-color: #FF5050;
 }

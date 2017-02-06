@@ -1,0 +1,53 @@
+/* Recreated the idea behind the Bootstrap column classes the name
+ * for the classes are a little clunky, but in this case it's just
+ * so it's obvious from the html that I'm not using bootstrap 
+ */
+
+/* Make sure all divs inside the column element are inline */
+.row{
+	display: inline-block;
+}
+
+.row > *{
+	float: left;
+	vertical-align: middle;
+}
+
+/* Responsive Column Sizes */
+/* For smallest devices or higher if none other specified */
+.col-sm-whole{ width: 100%; }
+
+.col-sm-half{ width: 50%; }
+
+.col-sm-third{ width: 33.33%; }
+
+.col-sm-fourth{ width: 25%; }
+
+@media (min-width:768px){
+
+	/* Responsive Column Sizes */
+	.col-md-whole{ width: 100%; }
+
+	.col-md-half{ width: 50%; }
+
+	.col-md-third{ width: 33.33%; }
+
+	.col-md-fourth{ width: 25%; }
+
+}
+
+@media (min-width:1200px){
+	/* Responsive Column Sizes */
+	.col-lg-whole{ width: 100%; }
+
+	.col-lg-half{ width: 50%; }
+
+	.col-lg-third{ width: 33.33%; }
+
+	.col-lg-fourth{ width: 25%; }
+}
+
+
+
+
+

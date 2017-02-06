@@ -1,13 +1,13 @@
-<div ng-repeat="item in inventory">
+<div id="inventory" ng-repeat="item in inventory">
 	<div class="item row">
-		<div class="item-left">
+		<div class="col-sm-whole col-md-half item-col">
 			<p><span class="title">Chocolate Type: </span>{{item.type}}</p>
-			<p><span class="title">Description: </span>{{item.description}}</p>
+			<p id="item-description"><span class="title">Description: </span>{{item.description}}</p>
 		</div>
-		<div class="item-center">
-			<p><span class="title">Price: </span>${{item.price}}</p>
+		<div class="col-sm-whole col-md-fourth item-col">
+			<p><span class="title">Price: </span>${{item.priceString}}</p>
 		</div>
-		<div class="item-right">
+		<div class="col-sm-whole col-md-fourth item-col">
 			<button ng-click="addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> 
 		</div>
 	</div>

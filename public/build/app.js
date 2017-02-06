@@ -393,9 +393,9 @@ angular.module("app")
     }
   ]);
 
-angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('components/inventory/inventoryView.html','<div ng-repeat="item in inventory">\n\t<div class="item row">\n\t\t<div class="item-left">\n\t\t\t<p><span class="title">Chocolate Type: </span>{{item.type}}</p>\n\t\t\t<p><span class="title">Description: </span>{{item.description}}</p>\n\t\t</div>\n\t\t<div class="item-center">\n\t\t\t<p><span class="title">Price: </span>${{item.price}}</p>\n\t\t</div>\n\t\t<div class="item-right">\n\t\t\t<button ng-click="addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> \n\t\t</div>\n\t</div>\n\n</div>\n');
-$templateCache.put('components/sideCart/sideCartView.html','<div>\n\t<button id="side-view-cart-btn" ng-click="toggleModalCart()">View cart<br>{{getItemCount()}} items</button>\n\t<add-to-cart-btn></add-to-cart-btn>\n</div>');
-$templateCache.put('shared/widgets/modalCart.html','<div id="modal-cart" ng-if="cartVisible">\n\t<div ng-if="cartEmpty()==false">\n\t\t<!-- c-row to not interfere with bootstrap classes -->\n\t\t<div class="row">\n\t\t\t<div class="left">\n\t\t\t\t<p class="title">Item</p>\n\t\t\t</div>\n\t\t\t<div class="center">\n\t\t\t\t<p class="title">Price</p>\n\t\t\t</div>\n\t\t\t<div class="right">\n\t\t\t\t<p class="title">Qty</p>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t</div>\n\t\t</div>\n\t\t<!-- I think you want to use the directive here...every time you click on view cart update the cart -->\n\t\t<div ng-repeat="item in items">\n\t\t\t<div class="row">\n\t\t\t\t<div class="left">\n\t\t\t\t\t<p class="title">{{item.type}}</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="center">\n\t\t\t\t\t<p class="title">{{item.price}}</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="right">\n\t\t\t\t\t<p class="title">{{item.qty}}</p>\n\t\t\t\t</div>\n\t\t\t\t<div><button ng-click=removeItem(item)>Remove</button></div>\n\t\t\t</div>\n\t\t</div>\n\t\n\t\t<p><span class="title">Total:</span>{{getTotal()}}</p>\n\t</div>\n\t<div ng-if="cartEmpty()"> \n\t\t<p id="cart-empty-msg">{{cartEmptyMsg}}</p>\n\t</div>\n\t<button ng-click="emptyCart()">Clear</button>\n\t<button ng-click="toggleModalCart()">Close</button>\n</div>');}]);
+angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('components/inventory/inventoryView.html','<div id="inventory" ng-repeat="item in inventory">\n\t<div class="item row">\n\t\t<div class="col-sm-whole col-md-half item-col">\n\t\t\t<p><span class="title">Chocolate Type: </span>{{item.type}}</p>\n\t\t\t<p id="item-description"><span class="title">Description: </span>{{item.description}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<p><span class="title">Price: </span>${{item.priceString}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<button ng-click="addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> \n\t\t</div>\n\t</div>\n\n</div>\n');
+$templateCache.put('components/sideCart/sideCartView.html','<div>\n\t<button id="side-view-cart-btn" ng-click="toggleModalCart()">View cart<br>{{getItemCount()}} items</button>\n\t<modal-cart></modal-cart>\n</div>');
+$templateCache.put('shared/widgets/modalCart.html','<div class="modal" ng-if="cartVisible">\n\t<div class="modal-content modal-cart">\n\t\t<h4>Your cart</h4>\n\t\t<div ng-if="isEmpty()==false">\n\t\t\t<!-- c-row to not interfere with bootstrap classes -->\n\t\t\t<div class="row cart-row">\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Item</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Price</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Qty</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth"> <p>&nbsp</p></div>\n\t\t\t</div>\n\t\t\t<!-- I think you want to use the directive here...every time you click on view cart update the cart -->\n\t\t\t<div ng-repeat="item in items">\n\t\t\t\t<div class="row cart-row">\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.type}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>${{item.priceString}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.qty}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth"><button class="cart-remove-btn" ng-click=removeItem(item)>Remove</button></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<p><span class="title">Total: </span>${{getStringTotal()}}</p>\n\t\t\t\n\t\t</div>\n\t\t<div ng-if="isEmpty()"> \n\t\t\t<p id="cart-empty-msg">{{cartEmptyMsg}}</p>\n\t\t</div>\n\t\t<div id="cart-btns">\n\t\t\t<button ng-click="emptyCart()">Clear</button>\n\t\t\t<button ng-click="toggleModalCart()">Close</button>\n\t\t</div>\n\t</div>\n</div>');}]);
 /**
  * Shopping Controller
  * 
@@ -410,16 +410,16 @@ angular
 
   	inventoryData.get().$promise.then(function(value) {
 			$scope.inventory = value.chocolates;
-			fixDecimalPrices($scope.inventory, "price");
+
+			// Convert all price properties to have 2 decimals 
+			// Place them inside new object property to avoid further
+			// conversion work
+			for(var i = 0; i < $scope.inventory.length; i++){
+				$scope.inventory[i]["priceString"] = shoppingCart.dollarRound($scope.inventory[i]["price"]);
+			}	
 		});
 		
-	function fixDecimalPrices(arr, prop){
-		for(var i = 0; i < arr.length; i++){
-			var item = arr[i].price;
-			item[prop] = item[prop].toFixed(2);
-		}
-	};
-    
+	    
     $scope.addItem = shoppingCart.addItem;
     $scope.getItemCount = shoppingCart.getItemCount;
 	});
@@ -431,25 +431,29 @@ angular
 
 	.controller("SideCartController", function($scope, $http, shoppingCart, inventoryData){
 		
+		$scope.getStringTotal = shoppingCart.getStringTotal;
+		$scope.removeItem = shoppingCart.removeItem;
+		$scope.getItemCount = shoppingCart.getItemCount;
+
 		//Array of items currently in cart
 		$scope.items = shoppingCart.getItemsInCart();
 		
-		//Determines whether the cart is visible in the view
+		//Determines whether the cart will be visible in the view
 		$scope.cartVisible = false;
-		
-		$scope.getTotal = shoppingCart.getTotal;
-		$scope.removeItem = shoppingCart.removeItem;
-		$scope.getItemCount = shoppingCart.getItemCount;
-		
+
+		//Check if cart is empty
+		$scope.isEmpty = shoppingCart.isEmpty;
+
+		//Remove all items from shopping cart
+		$scope.emptyCart = shoppingCart.emptyCart;
+
+		//Returns a cart is empty msg 
+		$scope.cartEmptyMsg = shoppingCart.cartEmptyMsg();
+
 		//Toggles cart visibility
 		$scope.toggleModalCart = function(){
 			$scope.cartVisible = !$scope.cartVisible;
 		};
-
-		$scope.cartEmpty = shoppingCart.isEmpty;
-		$scope.cartEmptyMsg = shoppingCart.cartEmptyMsg();
-
-		
 
 	});
 
@@ -461,7 +465,7 @@ angular
  */
 angular
 	.module("app")
-	.directive("addToCartBtn", function(){
+	.directive("modalCart", function(){
 
   	return{
   		restrict: "E",
@@ -470,7 +474,7 @@ angular
   		templateUrl: "shared/widgets/modalCart.html",
   		link: function(scope, elem, attrs){
   			//elem.bind
-  			return console.log("hello");
+  			//return 
   		}
   	}
 	});
@@ -490,15 +494,15 @@ angular
 
 		// Internal functions
 
-		// Adds $ amount to current shopping cart total
+		// Adds or subs amount to current shopping cart total
 		// will take positive and negative values from other methods	
 		function adjustTotal(amount){
 			if(total > -1) total = total + amount;
 		}
 
-		// Add amt to the item count
-		function adjustCount(amt){
-			itemCount = itemCount + amt;
+		// Add or subt amt to the item count
+		function adjustCount(amount){
+			itemCount = itemCount + amount;
 		}
 
 
@@ -518,13 +522,20 @@ angular
 			return itemCount;
 		}
 		
-		//Get the balance total for the cart contents
+		// Get the balance total in double type
+		// Use this for calculations
 		function getTotal(){
 			return total;
 		}
+
+		// Get the balance total in string type
+		// Use this for display purposes
+		function getStringTotal(){
+			return dollarRound(total);
+		}
 		
 		function cartEmptyMsg(){
-			return "This cart is empty";
+			return "There are no items in your cart";
 		}
 
 		// Remove all items from cart and adjust the count
@@ -532,13 +543,9 @@ angular
 			var itemsLength = items.length;
 			
 			for(var i = items.length-1; i > -1; i--){
-				console.log(items)
 				var item = items[i];
-				console.log(item);
 				removeItem(item);
 			}
-			//adjustCount((items.length-1)*-1);
-			//items = [];
 		}
 
 		function isEmpty(){
@@ -583,8 +590,16 @@ angular
 			}
 		}
 
+		// Rounds decimal numbers to two decimal places
+		// Note: Returns string
+		function dollarRound(num){
+			return num.toFixed(2);
+		}
+
 		return {			
 			getMsg: getMsg,
+			getTotal: getTotal,
+			getStringTotal, getStringTotal,
 			getItemsInCart: getItemsInCart,
 			getItemCount: getItemCount,
 			addItem: addItem,
@@ -592,6 +607,7 @@ angular
 			isEmpty: isEmpty,
 			emptyCart: emptyCart,
 			cartEmptyMsg: cartEmptyMsg,
+			dollarRound: dollarRound,
 		};
 
 	});

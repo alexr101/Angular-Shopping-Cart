@@ -1,40 +1,45 @@
-<div id="modal-cart" ng-if="cartVisible">
-	<div ng-if="cartEmpty()==false">
-		<!-- c-row to not interfere with bootstrap classes -->
-		<div class="row">
-			<div class="left">
-				<p class="title">Item</p>
+<div class="modal" ng-if="cartVisible">
+	<div class="modal-content modal-cart">
+		<h4>Your cart</h4>
+		<div ng-if="isEmpty()==false">
+			<!-- c-row to not interfere with bootstrap classes -->
+			<div class="row cart-row">
+				<div class="col-sm-fourth">
+					<p class="title">Item</p>
+				</div>
+				<div class="col-sm-fourth">
+					<p class="title">Price</p>
+				</div>
+				<div class="col-sm-fourth">
+					<p class="title">Qty</p>
+				</div>
+				<div class="col-sm-fourth"> <p>&nbsp</p></div>
 			</div>
-			<div class="center">
-				<p class="title">Price</p>
+			<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
+			<div ng-repeat="item in items">
+				<div class="row cart-row">
+					<div class="col-sm-fourth">
+						<p>{{item.type}}</p>
+					</div>
+					<div class="col-sm-fourth">
+						<p>${{item.priceString}}</p>
+					</div>
+					<div class="col-sm-fourth">
+						<p>{{item.qty}}</p>
+					</div>
+					<div class="col-sm-fourth"><button class="cart-remove-btn" ng-click=removeItem(item)>Remove</button></div>
+				</div>
 			</div>
-			<div class="right">
-				<p class="title">Qty</p>
-			</div>
-			<div>
-			</div>
+			
+			<p><span class="title">Total: </span>${{getStringTotal()}}</p>
+			
 		</div>
-		<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
-		<div ng-repeat="item in items">
-			<div class="row">
-				<div class="left">
-					<p class="title">{{item.type}}</p>
-				</div>
-				<div class="center">
-					<p class="title">{{item.price}}</p>
-				</div>
-				<div class="right">
-					<p class="title">{{item.qty}}</p>
-				</div>
-				<div><button ng-click=removeItem(item)>Remove</button></div>
-			</div>
+		<div ng-if="isEmpty()"> 
+			<p id="cart-empty-msg">{{cartEmptyMsg}}</p>
 		</div>
-	
-		<p><span class="title">Total:</span>{{getTotal()}}</p>
+		<div id="cart-btns">
+			<button ng-click="emptyCart()">Clear</button>
+			<button ng-click="toggleModalCart()">Close</button>
+		</div>
 	</div>
-	<div ng-if="cartEmpty()"> 
-		<p id="cart-empty-msg">{{cartEmptyMsg}}</p>
-	</div>
-	<button ng-click="emptyCart()">Clear</button>
-	<button ng-click="toggleModalCart()">Close</button>
 </div>
