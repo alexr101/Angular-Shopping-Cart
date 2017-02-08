@@ -10,8 +10,11 @@ angular
 
 	.controller("InventoryController", function($scope, $http, shoppingCart, inventoryData){
 
-  	inventoryData.get().$promise.then(function(value) {
-			$scope.inventory = value.chocolates;
+		$scope.shoppingCart = shoppingCart;
+
+		// Get inventory data
+  	inventoryData.then(function(value) {
+			$scope.inventory = value.data.chocolates;
 
 			// Convert all price properties to have 2 decimals 
 			// Place them inside new object property to avoid further
@@ -20,8 +23,5 @@ angular
 				$scope.inventory[i]["priceString"] = shoppingCart.dollarRound($scope.inventory[i]["price"]);
 			}	
 		});
-		
-	    
-    $scope.addItem = shoppingCart.addItem;
-    $scope.getItemCount = shoppingCart.getItemCount;
+
 	});

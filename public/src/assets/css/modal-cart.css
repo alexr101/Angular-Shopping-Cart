@@ -25,7 +25,7 @@
 
 .cart-row{
 	text-align: left;
-	margin: 10px auto 10px auto; 
+	margin: 3px auto 3px auto; 
 	width: calc(100% - 40px); /* The addition of both side paddings */
 	width: -webkit-calc(100% - 40px);
 	width: -moz-calc(100% - 40px);

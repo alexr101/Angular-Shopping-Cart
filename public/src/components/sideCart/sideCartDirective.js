@@ -1,21 +1,14 @@
 /**
- * Shopping Controller
+ * Modal Cart Directive
  * 
- * Gets inventory data from local json file, and sends it
- * to the shopping view through $scope.items
+ * Get the modal cart widget from the shared folder
  */
 angular
 	.module("app")
 	.directive("modalCart", function(){
-
   	return{
   		restrict: "E",
-  		scope: false,
-  		replace: false,
+  		replace: true,
   		templateUrl: "shared/widgets/modalCart.html",
-  		link: function(scope, elem, attrs){
-  			//elem.bind
-  			//return 
-  		}
   	}
 	});

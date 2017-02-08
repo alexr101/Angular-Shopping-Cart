@@ -4,4 +4,4 @@
  */
 
 //Main app module
-var app = angular.module("app", ["ngRoute", "ngResource", "ui.router"]);
+var app = angular.module("app", ["ngRoute", "ui.router"]);

@@ -1,9 +1,6 @@
 
 angular
 	.module("app")
-	.factory("inventoryData", function($http, $resource){
-
-		var resource = $resource("./data/inventory.json");
-
-		return resource;
+	.factory("inventoryData", function($http){
+		return $http.get("./data/inventory.json");
 	});

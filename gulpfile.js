@@ -57,6 +57,7 @@ gulp.task("js", ["template-html"], function() {
     "./public/src/assets/js/libs/angular-route.min.js",
     "./public/src/assets/js/libs/angular-resource.js",
     "./public/src/assets/js/libs/angular-ui-router.min.js",
+    "./public/src/assets/js/libs/angular-mocks.js",
 		"./public/src/app.js", //Make sure the app.js file precedes all other js, or the other modules will not load
 		"./public/src/**/*.js"
 		])

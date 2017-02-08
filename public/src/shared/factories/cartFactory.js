@@ -10,6 +10,7 @@ angular
 		var items = [];
 		var itemCount = 0;
 		var total = 0;
+		var cartVisible = false;
 
 		// Internal functions
 
@@ -22,6 +23,13 @@ angular
 		// Add or subt amt to the item count
 		function adjustCount(amount){
 			itemCount = itemCount + amount;
+		}
+
+		function itemInCart(item){
+			for(var i = 0; i < items.length; item++){
+				if(items[i].type === item.type) return true;
+			}
+			return false
 		}
 
 
@@ -53,7 +61,7 @@ angular
 			return dollarRound(total);
 		}
 		
-		function cartEmptyMsg(){
+		function getEmptyMsg(){
 			return "There are no items in your cart";
 		}
 
@@ -84,13 +92,15 @@ angular
 			addItemQty(item);
 			adjustTotal(item.price);
 			adjustCount(1);
+
+			return items;
 		}
 
 		// Removes and item from cart, and readjusts total
 		function removeItem(item){
 
 			// Make sure cart is not empty
-			if(!isEmpty()){
+			if((!isEmpty()) && itemInCart(item) ){
 
 				// remove all the items of this kind from cart count
 				adjustCount(item.qty * -1);
@@ -115,18 +125,30 @@ angular
 			return num.toFixed(2);
 		}
 
+		// Toggle the view for the cart
+		function toggle(){
+			cartVisible = !cartVisible;
+		}
+
+		// Returns boolean to determine if cart is currently visible
+		function isVisible(){
+			return cartVisible;
+		}
+
 		return {			
 			getMsg: getMsg,
 			getTotal: getTotal,
-			getStringTotal, getStringTotal,
+			getStringTotal: getStringTotal,
 			getItemsInCart: getItemsInCart,
 			getItemCount: getItemCount,
 			addItem: addItem,
 			removeItem: removeItem,
 			isEmpty: isEmpty,
 			emptyCart: emptyCart,
-			cartEmptyMsg: cartEmptyMsg,
+			getEmptyMsg: getEmptyMsg,
 			dollarRound: dollarRound,
+			toggle: toggle,
+			isVisible: isVisible,
 		};
 
 	});

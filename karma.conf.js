@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: 'public/src',
 
 
     // frameworks to use
@@ -12,7 +12,15 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*-spec.js'
+      'assets/js/libs/angular.min.js',
+      'assets/js/libs/angular-resource.min.js',
+      'assets/js/libs/angular-route.min.js',
+      'assets/js/libs/angular-ui-router.min.js',
+      'assets/js/libs/angular-mocks.js',
+      'app.js',
+      'components/**/*.js',
+      'shared/**/*.js',
+      '../../test/**/*-spec.js',
     ],
 
 
@@ -30,7 +38,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'dots', 'spec'],
 
 
     // web server port
@@ -54,16 +62,9 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
 
-    // plugins : [
-    //         'karma-phantomjs-launcher',
-    //         "karma-jasmine",
-    //         "phantomjs",
-    //         "jasmine-core"
-    // ],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   });
 };
