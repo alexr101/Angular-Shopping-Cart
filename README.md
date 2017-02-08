@@ -2,10 +2,15 @@
 
 ###Special Instructions
 
-To run the project use 'npm run build'. This will run Gulp and Karma to set up everything for you. Browsersync will 
-then launch the application in your default browser. 
+Run the project with 'npm run build'. This will run Gulp and Karma to set up everything for you. 
 
-[Click here](#setup) for the default setup.
+1. Gulp and Browsersync will launch the application in your default web browser. 
+
+2. Karma will run the tests in your terminal console with Phantomjs.
+
+You can also type 'gulp' if you decide to edit the code and see it live.
+
+Everything else is the same. [Click here](#setup) for the default setup.
 
 ###Application Structure
 
