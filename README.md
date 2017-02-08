@@ -5,22 +5,28 @@
 To run the project use 'npm run build'. This will run Gulp and Karma to set up everything for you. Browsersync will 
 then launch the application in your default browser. 
 
-[Click here](#setup) for the default setup. x
+[Click here](#setup) for the default setup.
 
 ##Application Structure
 
 Before starting to code I thought about the application requirements, and also considered the blog post on the recommendations
 for this test. I went for simple and maintainable. The project is divided into four main files
 
-Assets - Resources like CSS & JS 
-Components - Angular Components
-Data - Json data
-Shared - Shared Angular Factories or Views
+1. Assets - Resources like CSS & JS - Any javascript or external libraries like angular will live here. This keeps all these from mixing up with the actual angular application.
 
-It could have been simpler, but I really wanted to divide my angular into components as opposed to dividing them by type (model,
-view, controller) because this could get hard to read if more sections are added to application.
+2. Components - Angular Components - Dividing the code into components made the most sense for this project. Using folders named "controllers" or "views" would've worked for this small application, however I wanted to keep scalability in mind. In the spec it mentioned I was tasked with building the shopping cart. Meaning there are more modules that will be coming into play.
 
-I also decided against an approach that was too modular
+3. Data - Json data - I just wanted to keep the json data separate from everything else.
+
+4. Shared - Shared Angular Factories or Views - This folder is for components, directives, view, etc that may be shared with different controllers. The modal cart view lives here, because I considered the possibility of another page of the app having a "view cart" button. This way it can be referenced by a templateUrl to this location.
+
+I believe this approach keeps the application modular and scalable while not being broken down into too many small components and subfolders. 
+
+However, if the application became way bigger this structure might not be ideal. Further modularizing the components, or separating them by views. For example a "views/items" folder could contain all the components and views for its REST routes. eg:"item/:id" "item/:id/delete", etc.
+
+The Shopping Cart: This is the meat and bones of the application. This class is used in both controllers, and keeps them clean. I divided the methods inside this class into private and public API methods (Just used comments for that). Here you are able to add, remove, and clear the cart. I divided these tasks into smaller tasks to keep the code functional, and flexible.
+
+Note on CSS: I decided also break these down into components. It made it easier to find stylesheets. However this simple structure can make sheets pile up quick, and might make it hard to find them after a while. These can be divided into folders later. For example a folder named "Shopping Cart" for all the stylesheets of this application. "Payment" for checkout sheets etc.
 
 
 
