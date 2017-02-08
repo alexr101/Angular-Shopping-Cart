@@ -5,7 +5,7 @@
 To run the project use 'npm run build'. This will run Gulp and Karma to set up everything for you. Browsersync will 
 then launch the application in your default browser. 
 
-[Click here](#setup) for the default setup.
+[Click here](#setup) for the default setup. x
 
 ##Application Structure
 
