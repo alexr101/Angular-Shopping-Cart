@@ -2,7 +2,9 @@
 
 ###Special Instructions
 
-Run the project with 'npm run build'. This will run Gulp and Karma to set up everything for you. 
+Install all dependencies first with 'npm install'.
+
+Now you can run the project with 'npm run build'. This will run Gulp and Karma to set up everything for you. 
 
 1. Gulp and Browsersync will launch the application in your default web browser. 
 
@@ -15,7 +17,7 @@ Everything else is the same. [Click here](#setup) for the default setup.
 ###Application Structure
 
 Before starting to code I thought about the application requirements, and also considered the blog post on the recommendations
-for this test. I went for simple and maintainable. The project is divided into four main files
+for this test. I went for simple, maintainable and scalable. The project is divided into four main files
 
 1. Assets - Resources like CSS & JS - Any javascript or external libraries like angular will live here. This keeps all these from mixing up with the actual angular application.
 
@@ -41,7 +43,9 @@ I divided the methods inside this class into private and public API methods (Jus
 
 ###CSS 
 
-I decided also break the sheets down into components. It made it easier to find stylesheets while developing. However this simple structure can make sheets pile up quick, and might make it hard to find them after a while. These can be divided into folders later. For example a folder named "Shopping Cart" for all the stylesheets of this module. "Payment" for checkout sheets etc.
+All html tags are first normalized using "normalize.css" to create a uniform experience throughout browsers.
+
+I decided also break the sheets down into components. It made it easier to find stylesheets while developing. However this simple structure can make sheets pile up quick, and might make it hard to find them after a while. These can be divided into folders later. For example a folder named "Shopping Cart" for all the stylesheets of this module. "Payment" for payment module sheets etc.
 
 ###Thanks!
 
