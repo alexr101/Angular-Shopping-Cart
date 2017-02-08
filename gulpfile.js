@@ -53,46 +53,48 @@ gulp.task('css', function () {
 gulp.task("js", ["template-html"], function() {
 
 	return gulp.src([
+	
     "./public/src/assets/js/libs/angular.min.js",
     "./public/src/assets/js/libs/angular-route.min.js",
     "./public/src/assets/js/libs/angular-resource.js",
     "./public/src/assets/js/libs/angular-ui-router.min.js",
     "./public/src/assets/js/libs/angular-mocks.js",
-		"./public/src/app.js", //Make sure the app.js file precedes all other js, or the other modules will not load
-		"./public/src/**/*.js"
-		])
-		.pipe(sourcemaps.init())
-		.pipe(concat("app.js"))
-		//.pipe(ngAnnotate())
-		//.pipe(uglify())
-		.pipe(gulp.dest("./public/build"))
-		.pipe(browserSync.stream());
+	"./public/src/app.js", //Make sure the app.js file precedes all other js, or the other modules will not load
+	"!./public/src/**/*-test.js",
+	"./public/src/**/*.js"
+	])
+	.pipe(sourcemaps.init())
+	.pipe(concat("app.js"))
+	//.pipe(ngAnnotate())
+	//.pipe(uglify())
+	.pipe(gulp.dest("./public/build"))
+	.pipe(browserSync.stream());
 
 });
 
 //Move files to the build without editing them
 gulp.task("move", function(){
 
-	var filesToMove = [
+    var filesToMove = [
       "./public/src/data/**/*.*",
-  ];
+    ];
 
-  // the base option sets the relative root for the set of files,
-  // preserving the folder structure
-  gulp.src(filesToMove, { base: "./public/src" })
+// the base option sets the relative root for the set of files,
+// preserving the folder structure
+    gulp.src(filesToMove, { base: "./public/src" })
   	.pipe(gulp.dest("./public/build/"));
 });
 
 //watch any file changes and send them jshint
 gulp.task("watch", function(){
 	
-	gulp.watch("./public/src/index.html", ["html"]);
-	gulp.watch("./public/src/**/*.html", ["template-html"]);
-	gulp.watch("./public/src/**/*.css", ["css"]);
-	//gulp.watch("./public/src/**/*.js", ["jshint"]);
-	gulp.watch("./public/src/**/*.js", ["js"]);
-
-	return gutil.log("Gulp is running!");
+    gulp.watch("./public/src/index.html", ["html"]);
+    gulp.watch("./public/src/**/*.html", ["template-html"]);
+    gulp.watch("./public/src/**/*.css", ["css"]);
+    //gulp.watch("./public/src/**/*.js", ["jshint"]);
+    gulp.watch("./public/src/**/*.js", ["js"]);
+    
+    return gutil.log("Gulp is running!");
 
 });
 
@@ -103,18 +105,22 @@ gulp.task('browser-sync', function() {
             baseDir: "./public/build"
         }
     });
+    
+    browserSync({
+        port: 8082
+    });
 });
 
 //DEPENDENT GULP TASKS
 
-//Setup jshint linter with styled format
-// gulp.task("jshint", ["js"], function(){
+// Setup jshint linter with styled format
+gulp.task("jshint", ["js"], function(){
 
-// 	return gulp.src("./public/src/**/*.js")
-// 		.pipe(jshint())
-// 		.pipe(jshint.reporter("jshint-stylish"));
+	return gulp.src("./public/src/**/*.js")
+		.pipe(jshint())
+		.pipe(jshint.reporter("jshint-stylish"));
 
-// });
+});
 
 //Update browser after any file changes
 gulp.task("reload", ["html", "template-html", "css", "js"], function(){

@@ -10,6 +10,7 @@
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+/* Shopping - General */
 #inventory:first-child{
 	margin-top: 10px;
 }
@@ -18,8 +19,7 @@
 	margin-bottom: 50px;
 }
 
-/* Shopping Controller - Content - General */
-
+/* Shopping Controller - Content */
 .item{
 	display: inline-block;
 	font-size: 1rem;
@@ -34,9 +34,10 @@
 
 #item-description{
 	margin-bottom: 0;
+	width: 100%;
 }
 
-/* Shopping Controller - Content - Rows */
+/* Shopping Controller - Content - Columns */
 .item .item-col{
 	margin: 0;
 	vertical-align: top;
@@ -52,11 +53,7 @@
 }
 
 @media (min-width:768px){
-
-	.item{
-		margin-top: 0px;
-	}
-	
+	/* Shopping - General */
 	#inventory:first-child{
 		margin-top: 0;
 	}
@@ -65,9 +62,15 @@
 		width: 70%;
 		padding: 0px 10%;
 	}
+	
+	/* Shopping Controller - Content */
+	.item{
+		margin-top: 0px;
+	}
 }
 
 @media (min-width:1200px){
+	/* Shopping Controller - Content - Columns */
 	.item-col button{
 		width: 100px;
 	}

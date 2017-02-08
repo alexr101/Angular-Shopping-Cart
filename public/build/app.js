@@ -3771,6 +3771,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
 //Main app module
 var app = angular.module("app", ["ngRoute", "ui.router"]);
+
 /**
  * Separate configurations by utility to keep concerns separated
  */
@@ -3784,10 +3785,10 @@ angular.module("app")
 	//Ui-routes
 	.config(["$stateProvider", "$urlRouterProvider", 
     function($stateProvider, $urlRouterProvider) {
+    	//Make shopping our default route for this test
       $urlRouterProvider.otherwise("/shopping");
 
       $stateProvider
-
 	      .state("shopping", {
 	      	url: "/shopping",
 	      	views:{
@@ -3802,9 +3803,9 @@ angular.module("app")
     }
   ]);
 
-angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('components/inventory/inventoryView.html','<div id="inventory" ng-repeat="item in inventory">\n\t<div class="item row">\n\t\t<div class="col-sm-whole col-md-half item-col">\n\t\t\t<p><span class="title">Chocolate Type: </span>{{item.type}}</p>\n\t\t\t<p id="item-description"><span class="title">Description: </span>{{item.description}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<p><span class="title">Price: </span>${{item.priceString}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<button ng-click="shoppingCart.addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> \n\t\t</div>\n\t</div>\n\n</div>\n');
-$templateCache.put('components/sideCart/sideCartView.html','<div>\n\t<button id="side-view-cart-btn" ng-click="cart.toggle()">View cart<br>{{cart.getItemCount()}} items</button>\n\t<modal-cart></modal-cart>\n</div>');
-$templateCache.put('shared/widgets/modalCart.html','<div class="modal" ng-if="cart.isVisible()">\n\t<div class="modal-content modal-cart">\n\t\t<h4>Your cart</h4>\n\t\t<div ng-if="cart.isEmpty()==false">\n\t\t\t<!-- c-row to not interfere with bootstrap classes -->\n\t\t\t<div class="row cart-row">\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Item</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Price</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Qty</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth"> <p>&nbsp</p></div>\n\t\t\t</div>\n\t\t\t<!-- I think you want to use the directive here...every time you click on view cart update the cart -->\n\t\t\t<div ng-repeat="item in cart.getItemsInCart()">\n\t\t\t\t<div class="row cart-row">\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.type}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>${{item.priceString}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.qty}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth"><button class="cart-remove-btn" ng-click="cart.removeItem(item)">Remove</button></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<p id="cart-total"><span class="title">Total: </span>${{cart.getStringTotal()}}</p>\n\t\t\t\n\t\t</div>\n\t\t<div ng-if="cart.isEmpty()"> \n\t\t\t<p id="cart-empty-msg">{{cart.getEmptyMsg()}}</p>\n\t\t</div>\n\t\t<div id="cart-btns">\n\t\t\t<button ng-click="cart.emptyCart()">Clear</button>\n\t\t\t<button ng-click="cart.toggle()">Close</button>\n\t\t</div>\n\t</div>\n</div>');}]);
+angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('components/inventory/inventoryView.html','<div id="inventory" ng-repeat="item in inventory">\n\t<div class="item row">\n\t\t<div class="col-sm-whole col-md-half item-col">\n\t\t\t<p><span class="title">Chocolate Type: </span>{{item.type}}</p>\n\t\t\t<p id="item-description"><span class="title">Description: </span>{{item.description}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<p><span class="title">Price: </span>${{item.priceString}}</p>\n\t\t</div>\n\t\t<div class="col-sm-whole col-md-fourth item-col">\n\t\t\t<button ng-click="shoppingCart.addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> \n\t\t</div>\n\t</div>\n</div>\n');
+$templateCache.put('components/sideCart/sideCartView.html','<div>\n\t<button id="side-view-cart-btn" ng-click="cart.toggle()">View cart<br>{{cart.getItemCount()}} items</button>\n\t<modal-cart>Your cart</modal-cart>\n</div>');
+$templateCache.put('shared/partials/modalCart.html','<div class="modal" ng-if="cart.isVisible()">\n\t<div class="modal-cart-content">\n\t\t<h4>Your cart</h4>\n\t\t<div ng-if="cart.isEmpty()==false">\n\t\t\t<div class="row cart-row">\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Item</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Price</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t<p class="title">Qty</p>\n\t\t\t\t</div>\n\t\t\t\t<div class="col-sm-fourth"> <p>&nbsp</p></div>\n\t\t\t</div>\n\t\t\t<div ng-repeat="item in cart.getItemsInCart()">\n\t\t\t\t<div class="row cart-row">\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.type}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>${{item.priceString}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth">\n\t\t\t\t\t\t<p>{{item.qty}}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="col-sm-fourth"><button class="cart-remove-btn" ng-click="cart.removeItem(item)">Remove</button></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<p id="cart-total"><span class="title">Total: </span>${{cart.getStringTotal()}}</p>\n\t\t</div>\n\t\t<div ng-if="cart.isEmpty()"> \n\t\t\t<p id="cart-empty-msg">{{cart.getEmptyMsg()}}</p>\n\t\t</div>\n\t\t<div id="cart-btns">\n\t\t\t<button ng-click="cart.emptyCart()">Clear</button>\n\t\t\t<button ng-click="cart.toggle()">Close</button>\n\t\t</div>\n\t</div>\n</div>');}]);
 /**
  * Shopping Controller
  * 
@@ -3812,60 +3813,57 @@ $templateCache.put('shared/widgets/modalCart.html','<div class="modal" ng-if="ca
  * to the shopping view through $scope.items
  */
 angular
-	
 	.module("app")
+	.controller("InventoryController",[ 
+		"$scope", "$http", "shoppingCart","inventoryData",
+		function($scope, $http, shoppingCart, inventoryData){
 
-	.controller("InventoryController", function($scope, $http, shoppingCart, inventoryData){
-
-		$scope.shoppingCart = shoppingCart;
-
-		$scope.number = 1;
-
-		// Get inventory data
-  	inventoryData.then(function(value) {
-			$scope.inventory = value.data.chocolates;
-
-			// Convert all price properties to have 2 decimals 
-			// Place them inside new object property to avoid further
-			// conversion work
-			for(var i = 0; i < $scope.inventory.length; i++){
-				$scope.inventory[i]["priceString"] = shoppingCart.dollarRound($scope.inventory[i]["price"]);
-			}	
-		});
-
-	});
-
-
-angular
+			$scope.shoppingCart = shoppingCart;
 	
-	.module("app")
-
-	.controller("SideCartController", function($scope, $http, shoppingCart, inventoryData){
-		
-		//Brind shopping cart object to the local scope
-		$scope.cart = shoppingCart;
-
-	});
+			// Get inventory data
+	  	inventoryData.then(function(value) {
+				$scope.inventory = value.data.chocolates;
+	
+				// Convert all price properties to have 2 decimals 
+				// Place them inside new object property to avoid further
+				// conversion work
+				for(var i = 0; i < $scope.inventory.length; i++){
+					$scope.inventory[i]["priceString"] = shoppingCart.dollarRound($scope.inventory[i]["price"]);
+				}	
+			});
+	
+	}]);
 
 /**
- * Shopping Controller
+ * Side Cart Controller
  * 
- * Gets inventory data from local json file, and sends it
- * to the shopping view through $scope.items
+ * Contains a directive from which we can call the modal cart
+ */
+angular
+	.module("app")
+	.controller("SideCartController",[
+		"$scope", "$http", "shoppingCart", "inventoryData",
+		function($scope, $http, shoppingCart, inventoryData){
+		
+		//Brind shopping cart object to the local scope
+		//We can now use all the shopping cart functions directly in our view
+		$scope.cart = shoppingCart;
+
+	}]);
+
+/**
+ * Modal Cart Directive
+ * 
+ * Get the modal cart widget from the shared folder
  */
 angular
 	.module("app")
 	.directive("modalCart", function(){
-
+		
   	return{
   		restrict: "E",
-  		scope: false,
-  		replace: false,
-  		templateUrl: "shared/widgets/modalCart.html",
-  		link: function(scope, elem, attrs){
-  			//elem.bind
-  			//return 
-  		}
+  		replace: true,
+  		templateUrl: "shared/partials/modalCart.html",
   	}
 	});
 
@@ -3896,21 +3894,18 @@ angular
 			itemCount = itemCount + amount;
 		}
 
+		function itemInCart(item){
+			return item.qty > 0;
+		}
+		
+		// Adds a qty property to the item to keep track of 
+		// how many items of the same are in the cart
+		function addItemQty(item){
+			if(!item.qty) item.qty = 1;
+			else item.qty++;
+		}
+
 		// Public Functions API
-
-		// prompt messages for different cart statuses
-		function getMsg(){
-			return msg.empty;
-		}
-
-		function getItemsInCart(){
-			return items;
-		}
-
-		// Get the amount of items currently in cart
-		function getItemCount(){
-			return itemCount;
-		}
 		
 		// Get the balance total in double type
 		// Use this for calculations
@@ -3924,29 +3919,19 @@ angular
 			return dollarRound(total);
 		}
 		
+		//Message when the cart is empty
 		function getEmptyMsg(){
 			return "There are no items in your cart";
 		}
 
-		// Remove all items from cart and adjust the count
-		function emptyCart(){
-			var itemsLength = items.length;
-			
-			for(var i = items.length-1; i > -1; i--){
-				var item = items[i];
-				removeItem(item);
-			}
+		// Get the amount of items currently in cart
+		function getItemCount(){
+			return itemCount;
 		}
-
-		function isEmpty(){
-			return (itemCount === 0);
-		}
-
-		// Adds a qty property to the item to keep track of 
-		// how many items of the same are in the cart
-		function addItemQty(item){
-			if(!item.qty) item.qty = 1;
-			else item.qty++;
+		
+		//Get an array of the items in the cart
+		function getItemsInCart(){
+			return items;
 		}
 
 		// Add an item to the cart, and update the count
@@ -3963,7 +3948,7 @@ angular
 		function removeItem(item){
 
 			// Make sure cart is not empty
-			if( !isEmpty() && (item.qty)){
+			if((!isEmpty()) && itemInCart(item) ){
 
 				// remove all the items of this kind from cart count
 				adjustCount(item.qty * -1);
@@ -3981,13 +3966,17 @@ angular
 				item.qty = 0;
 			}
 		}
-
-		// Rounds decimal numbers to two decimal places
-		// Note: Returns string
-		function dollarRound(num){
-			return num.toFixed(2);
+		
+		// Remove all items from cart and adjust the count
+		function emptyCart(){
+			var itemsLength = items.length;
+			
+			for(var i = items.length-1; i > -1; i--){
+				var item = items[i];
+				removeItem(item);
+			}
 		}
-
+		
 		// Toggle the view for the cart
 		function toggle(){
 			cartVisible = !cartVisible;
@@ -3997,21 +3986,32 @@ angular
 		function isVisible(){
 			return cartVisible;
 		}
+		
+		function isEmpty(){
+			return (itemCount === 0);
+		}
+
+		// Rounds decimal numbers to two decimal places
+		// Note: Returns string
+		function dollarRound(num){
+			return num.toFixed(2);
+		}
+
+		
 
 		return {			
-			getMsg: getMsg,
 			getTotal: getTotal,
 			getStringTotal: getStringTotal,
-			getItemsInCart: getItemsInCart,
+			getEmptyMsg: getEmptyMsg,
 			getItemCount: getItemCount,
+			getItemsInCart: getItemsInCart,
 			addItem: addItem,
 			removeItem: removeItem,
-			isEmpty: isEmpty,
 			emptyCart: emptyCart,
-			getEmptyMsg: getEmptyMsg,
-			dollarRound: dollarRound,
 			toggle: toggle,
 			isVisible: isVisible,
+			isEmpty: isEmpty,
+			dollarRound: dollarRound,
 		};
 
 	});

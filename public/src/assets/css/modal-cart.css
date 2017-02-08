@@ -1,18 +1,6 @@
-/* Modal Cart */
-
-.modal{
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgba(0,0,0,.4);
-}
-
 /* Modal Cart - Content */
-.modal-content{
+
+.modal-cart-content{
 	position: relative;
 	display: inline-block;
 	top: 10%;
@@ -34,15 +22,16 @@
 	border: 1px solid rgba(0,0,0,.1);
 }
 
+#cart-total{
+	text-align: left;
+}
+
+/* Modal Cart - Buttons */
+
 .cart-remove-btn{
 	margin: auto;
 	margin-top: 12px;
 	padding: 3px;
-}
-
-
-#cart-total{
-	text-align: left;
 }
 
 #cart-btns{
@@ -55,12 +44,3 @@
 	padding: 10px 20px;
 	float: left;
 }
-
-@media(min-width:768px){
-
-}
-
-
-
-
-

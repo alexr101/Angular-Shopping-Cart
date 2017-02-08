@@ -2,39 +2,25 @@
 <html  ng-app="app">
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Stride code test</title>
-
-    <!-- Stylesheet -->
+    <title>Sugar Sweet Chocolate Treats</title>
+    <!-- Minified Stylesheet -->
     <link rel="stylesheet" href="assets/css/stylesheet.css">
-  	<!-- Angular CDNs -->
-<!-- 		<script src="assets/js/libs/angular.min.js"></script>
-		<script src="assets/js/libs/angular-route.min.js"></script>
-		<script src="assets/js/libs/angular-resource.js"></script>
-    <script src="assets/js/libs/angular-ui-router.min.js"></script> -->
-    
-
-    <!-- Angular Script -->
+    <!-- Minified Script -->
     <script src="app.js"></script>
-    
   </head>
   <body>
   	<div>
       <div id="header">
-        <h1 id="company-name">Stride NYC</h1>
+        <h2 id="company-name">Sugar Sweet Chocolate Treats</h2>
       </div>
       <div class="page-content">
-
         <div ng-controller="SideCartController" id="side-cart-controller">
             <div ui-view="sideCart"></div>
         </div>  
-
         <div ng-controller="InventoryController" id="inventory-controller">
           <div ui-view="inventory"></div>
         </div>
-        
       </div>
-      
     </div>
-  	
   </body>
 </html>

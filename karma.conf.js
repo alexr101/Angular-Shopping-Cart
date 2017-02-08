@@ -20,7 +20,8 @@ module.exports = function(config) {
       'app.js',
       'components/**/*.js',
       'shared/**/*.js',
-      '../../test/**/*-spec.js',
+      'shared/partials/*.html',
+      '**/*-test.js',
     ],
 
 
@@ -32,8 +33,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'shared/partials/*.html': 'ng-html2js'
     },
 
+    ngHtml2JsPreprocessor: {
+
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -47,7 +52,6 @@ module.exports = function(config) {
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG

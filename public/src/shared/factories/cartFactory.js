@@ -26,28 +26,17 @@ angular
 		}
 
 		function itemInCart(item){
-			for(var i = 0; i < items.length; item++){
-				if(items[i].type === item.type) return true;
-			}
-			return false
+			return item.qty > 0;
 		}
-
+		
+		// Adds a qty property to the item to keep track of 
+		// how many items of the same are in the cart
+		function addItemQty(item){
+			if(!item.qty) item.qty = 1;
+			else item.qty++;
+		}
 
 		// Public Functions API
-
-		// prompt messages for different cart statuses
-		function getMsg(){
-			return msg.empty;
-		}
-
-		function getItemsInCart(){
-			return items;
-		}
-
-		// Get the amount of items currently in cart
-		function getItemCount(){
-			return itemCount;
-		}
 		
 		// Get the balance total in double type
 		// Use this for calculations
@@ -61,29 +50,19 @@ angular
 			return dollarRound(total);
 		}
 		
+		//Message when the cart is empty
 		function getEmptyMsg(){
 			return "There are no items in your cart";
 		}
 
-		// Remove all items from cart and adjust the count
-		function emptyCart(){
-			var itemsLength = items.length;
-			
-			for(var i = items.length-1; i > -1; i--){
-				var item = items[i];
-				removeItem(item);
-			}
+		// Get the amount of items currently in cart
+		function getItemCount(){
+			return itemCount;
 		}
-
-		function isEmpty(){
-			return (itemCount === 0);
-		}
-
-		// Adds a qty property to the item to keep track of 
-		// how many items of the same are in the cart
-		function addItemQty(item){
-			if(!item.qty) item.qty = 1;
-			else item.qty++;
+		
+		//Get an array of the items in the cart
+		function getItemsInCart(){
+			return items;
 		}
 
 		// Add an item to the cart, and update the count
@@ -118,13 +97,17 @@ angular
 				item.qty = 0;
 			}
 		}
-
-		// Rounds decimal numbers to two decimal places
-		// Note: Returns string
-		function dollarRound(num){
-			return num.toFixed(2);
+		
+		// Remove all items from cart and adjust the count
+		function emptyCart(){
+			var itemsLength = items.length;
+			
+			for(var i = items.length-1; i > -1; i--){
+				var item = items[i];
+				removeItem(item);
+			}
 		}
-
+		
 		// Toggle the view for the cart
 		function toggle(){
 			cartVisible = !cartVisible;
@@ -134,21 +117,32 @@ angular
 		function isVisible(){
 			return cartVisible;
 		}
+		
+		function isEmpty(){
+			return (itemCount === 0);
+		}
+
+		// Rounds decimal numbers to two decimal places
+		// Note: Returns string
+		function dollarRound(num){
+			return num.toFixed(2);
+		}
+
+		
 
 		return {			
-			getMsg: getMsg,
 			getTotal: getTotal,
 			getStringTotal: getStringTotal,
-			getItemsInCart: getItemsInCart,
+			getEmptyMsg: getEmptyMsg,
 			getItemCount: getItemCount,
+			getItemsInCart: getItemsInCart,
 			addItem: addItem,
 			removeItem: removeItem,
-			isEmpty: isEmpty,
 			emptyCart: emptyCart,
-			getEmptyMsg: getEmptyMsg,
-			dollarRound: dollarRound,
 			toggle: toggle,
 			isVisible: isVisible,
+			isEmpty: isEmpty,
+			dollarRound: dollarRound,
 		};
 
 	});

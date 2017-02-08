@@ -1,3 +1,31 @@
+#My Stride Code Test Submission
+
+##Special Instructions
+
+To run the project use 'npm run build'. This will run Gulp and Karma to set up everything for you. Browsersync will 
+then launch the application in your default browser. 
+
+[Click here](#setup) for the default setup.
+
+##Application Structure
+
+Before starting to code I thought about the application requirements, and also considered the blog post on the recommendations
+for this test. I went for simple and maintainable. The project is divided into four main files
+
+Assets - Resources like CSS & JS 
+Components - Angular Components
+Data - Json data
+Shared - Shared Angular Factories or Views
+
+It could have been simpler, but I really wanted to divide my angular into components as opposed to dividing them by type (model,
+view, controller) because this could get hard to read if more sections are added to application.
+
+I also decided against an approach that was too modular
+
+
+
+
+
 # Stride's web code test
 
 ## Instructions

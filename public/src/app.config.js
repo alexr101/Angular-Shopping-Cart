@@ -11,10 +11,10 @@ angular.module("app")
 	//Ui-routes
 	.config(["$stateProvider", "$urlRouterProvider", 
     function($stateProvider, $urlRouterProvider) {
+    	//Make shopping our default route for this test
       $urlRouterProvider.otherwise("/shopping");
 
       $stateProvider
-
 	      .state("shopping", {
 	      	url: "/shopping",
 	      	views:{

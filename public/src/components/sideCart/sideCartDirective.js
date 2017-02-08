@@ -6,9 +6,10 @@
 angular
 	.module("app")
 	.directive("modalCart", function(){
+		
   	return{
   		restrict: "E",
   		replace: true,
-  		templateUrl: "shared/widgets/modalCart.html",
+  		templateUrl: "shared/partials/modalCart.html",
   	}
 	});

@@ -14,18 +14,24 @@
 	padding: 3px;
 }
 
-@media(min-width:768px){
+@media (min-width:768px){
+	
+	/* Side Cart Controller */
 	#side-cart-controller{
 		width: 25%;
 		float: right;
 	}
+	
+	/* Cart Button */
 	#side-view-cart-btn{
 		width: auto;
 		padding: 10px 20px;
 	}
 }
 
-@media(min-width: 1200px){
+@media (min-width: 1200px){
+	
+	/* Cart Button */
 	#side-view-cart-btn{
 		height: 80px;
 		padding: 15px 25px;

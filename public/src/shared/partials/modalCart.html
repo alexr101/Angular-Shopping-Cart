@@ -1,10 +1,7 @@
-your cart
 <div class="modal" ng-if="cart.isVisible()">
-your cart
-	<div class="modal-content modal-cart">
+	<div class="modal-cart-content">
 		<h4>Your cart</h4>
 		<div ng-if="cart.isEmpty()==false">
-			<!-- c-row to not interfere with bootstrap classes -->
 			<div class="row cart-row">
 				<div class="col-sm-fourth">
 					<p class="title">Item</p>
@@ -17,7 +14,6 @@ your cart
 				</div>
 				<div class="col-sm-fourth"> <p>&nbsp</p></div>
 			</div>
-			<!-- I think you want to use the directive here...every time you click on view cart update the cart -->
 			<div ng-repeat="item in cart.getItemsInCart()">
 				<div class="row cart-row">
 					<div class="col-sm-fourth">
@@ -32,9 +28,7 @@ your cart
 					<div class="col-sm-fourth"><button class="cart-remove-btn" ng-click="cart.removeItem(item)">Remove</button></div>
 				</div>
 			</div>
-			
 			<p id="cart-total"><span class="title">Total: </span>${{cart.getStringTotal()}}</p>
-			
 		</div>
 		<div ng-if="cart.isEmpty()"> 
 			<p id="cart-empty-msg">{{cart.getEmptyMsg()}}</p>

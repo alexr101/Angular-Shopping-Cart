@@ -12,11 +12,13 @@
   },
   "scripts": {
     "serve": "node ./server.js",
-    "test": "karma start"
+    "test": "karma start",
+    "build": "concurrently --kill-others \"karma start\" \"gulp\""
   },
   "devDependencies": {
     "angular-mocks": "^1.6.1",
     "browser-sync": "^2.18.7",
+    "concurrently": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-concat": "^2.6.1",
@@ -27,7 +29,6 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
-    "jshint-stylish": "^2.2.1",
-    "karma-spec-reporter": "0.0.26"
+    "jshint-stylish": "^2.2.1"
   }
 }

@@ -37,6 +37,7 @@
 }
 
 @media (min-width:1200px){
+	
 	/* Responsive Column Sizes */
 	.col-lg-whole{ width: 100%; }
 
