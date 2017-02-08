@@ -6,8 +6,8 @@
 angular
 	.module("app")
 	.controller("SideCartController",[
-		"$scope", "$http", "shoppingCart", "inventoryData",
-		function($scope, $http, shoppingCart, inventoryData){
+		"$scope", "shoppingCart",
+		function($scope, shoppingCart){
 		
 		//Brind shopping cart object to the local scope
 		//We can now use all the shopping cart functions directly in our view

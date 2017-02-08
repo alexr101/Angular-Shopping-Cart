@@ -6,20 +6,20 @@ describe("Side Cart Controller", function(){
 	beforeEach(module("app"));
 	beforeEach(module("shared/partials/modalCart.html"));
 
-	beforeEach(inject(function(_$rootScope_, _$compile_){
+	beforeEach(inject(function(_$rootScope_, _$compile_, $document){
 		$rootScope = _$rootScope_;
 		$compile = _$compile_;
 	}));
 
-	describe("view", function(){
+	describe("Directive <modalcart>", function(){
 		it("renders", function(){
-			var element = $compile("<modal-cart></modal-cart>")($rootScope);
-			//$rootScope.$digest();
-			
-			console.log(element)
+			//Because this directive's replace == true, 
+			//wrap around div to call outerHTML below
+			var element = $compile("<div><modal-cart></modal-cart></div>")($rootScope);
 
+			$rootScope.$digest();
 
-			expect(element.html()).toContain("Your cart");
+			expect(element[0].outerHTML).toContain("<!-- ngIf: cart.isVisible() -->");
 		})
 	})
 })

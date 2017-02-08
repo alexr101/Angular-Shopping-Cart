@@ -89,6 +89,12 @@
 				expect(shoppingCart.isVisible()).toBeTruthy();
 			});
 		});
+
+		describe("Dollar round", function(){
+			it("rounds doubles to 2 decimal places", function(){
+				expect(shoppingCart.dollarRound(1.5)).toEqual('1.50');
+			})
+		});
 	});
 
 

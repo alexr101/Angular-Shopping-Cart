@@ -128,8 +128,6 @@ angular
 			return num.toFixed(2);
 		}
 
-		
-
 		return {			
 			getTotal: getTotal,
 			getStringTotal: getStringTotal,
@@ -144,6 +142,4 @@ angular
 			isEmpty: isEmpty,
 			dollarRound: dollarRound,
 		};
-
 	});
-

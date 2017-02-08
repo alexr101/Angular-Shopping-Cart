@@ -13,10 +13,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'assets/js/libs/angular.min.js',
+      'assets/js/libs/angular-mocks.js',
       'assets/js/libs/angular-resource.min.js',
       'assets/js/libs/angular-route.min.js',
       'assets/js/libs/angular-ui-router.min.js',
-      'assets/js/libs/angular-mocks.js',
       'app.js',
       'components/**/*.js',
       'shared/**/*.js',
@@ -37,7 +37,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-
+      
     },
 
     // test results reporter to use

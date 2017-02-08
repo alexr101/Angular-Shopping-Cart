@@ -19,7 +19,7 @@ describe("InventoryController", function(){
 	}));
 
 	describe("$scope.shoppingCart", function(){
-		it("to equal shopping cart factory object", function(){
+		it("equals shopping cart factory object", function(){
 			expect($scope.shoppingCart).toEqual(shoppingCart);
 		});
 	});
