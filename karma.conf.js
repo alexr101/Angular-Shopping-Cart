@@ -37,7 +37,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-      
+
     },
 
     // test results reporter to use
