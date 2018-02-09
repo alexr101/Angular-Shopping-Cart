@@ -7,8 +7,9 @@
 		<div class="col-sm-whole col-md-fourth item-col">
 			<p><span class="title">Price: </span>${{item.priceString}}</p>
 		</div>
+		<input type="number" ng-model="quantity" />
 		<div class="col-sm-whole col-md-fourth item-col">
-			<button ng-click="shoppingCart.addItem(item)" class="add-to-cart-btn">Add </br>to cart</button> 
+			<button ng-click="shoppingCart.addItem(item, quantity)" class="add-to-cart-btn">Add </br>to cart</button> 
 		</div>
 	</div>
 </div>

@@ -11,6 +11,7 @@ angular
 		function($scope, $http, shoppingCart, inventoryData){
 
 			$scope.shoppingCart = shoppingCart;
+			$scope.quantity = 1;
 	
 			// Get inventory data
 	  	inventoryData.then(function(value) {

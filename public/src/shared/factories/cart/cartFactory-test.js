@@ -13,8 +13,21 @@
 			});
 		});
 
+		describe("GetItemCount", function(){
+
+			it("should return amount of a given item", function(){
+				var tempItem = { qty: 10 }
+
+				expect(shoppingCart.getItemCount(tempItem)).toEqual(10)
+			})
+		})
+
 		describe("Add item", function(){
-			var tempItem = { price: 5 };
+			var tempItem;
+
+			beforeEach(function(){
+				tempItem = { price: 5 };
+			})
 
 			it("add item price to total", function(){
 				shoppingCart.addItem(tempItem);
@@ -28,8 +41,10 @@
 				expect(shoppingCart.getTotalItemCount()).toEqual(1);
 			});
 
-	
-
+			it("should add specified amount of items", function(){
+				shoppingCart.addItem(tempItem, 5)
+				expect(tempItem.qty).toEqual(5)
+			});
 		});
 
 		describe("Remove Item", function(){

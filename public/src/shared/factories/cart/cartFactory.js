@@ -31,9 +31,9 @@ angular
 		
 		// Adds a qty property to the item to keep track of 
 		// how many items of the same are in the cart
-		function addItemQty(item){
-			if(!item.qty) item.qty = 1;
-			else item.qty++;
+		function addItemQty(item, quantity){
+			if(!item.qty) item.qty = quantity;
+			else item.qty += quantity;
 		}
 
 		// Public Functions API
@@ -48,6 +48,10 @@ angular
 		// Use this for display purposes
 		function getStringTotal(){
 			return dollarRound(total);
+		}
+
+		function getItemCount(item) {
+			return item.qty
 		}
 		
 		//Message when the cart is empty
@@ -66,11 +70,12 @@ angular
 		}
 
 		// Add an item to the cart, and update the count
-		function addItem(item){
+		function addItem(item, qty){
+			qty = qty || 1;
 			if(!item.qty) items.push(item);
-			addItemQty(item);
+			addItemQty(item, qty);
 			adjustTotal(item.price);
-			adjustCount(1);
+			adjustCount(qty);
 
 			return items;
 		}
@@ -132,6 +137,7 @@ angular
 			getTotal: getTotal,
 			getStringTotal: getStringTotal,
 			getEmptyMsg: getEmptyMsg,
+			getItemCount: getItemCount,
 			getTotalItemCount: getTotalItemCount,
 			getItemsInCart: getItemsInCart,
 			addItem: addItem,
