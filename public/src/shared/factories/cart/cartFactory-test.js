@@ -25,8 +25,10 @@
 			it("adds 1 to total items in cart count", function(){
 				shoppingCart.addItem(tempItem);
 
-				expect(shoppingCart.getItemCount()).toEqual(1);
+				expect(shoppingCart.getTotalItemCount()).toEqual(1);
 			});
+
+	
 
 		});
 
@@ -45,7 +47,7 @@
 			it("cannot remove item that is not in cart", function(){
 				shoppingCart.removeItem(tempItem2);
 
-				expect(shoppingCart.getItemCount()).toEqual(0);
+				expect(shoppingCart.getTotalItemCount()).toEqual(0);
 			});
 
 			it("cannot adjust total to less than 0", function(){
@@ -59,7 +61,7 @@
 				shoppingCart.addItem(tempItem2);
 				shoppingCart.removeItem(tempItem2);
 
-				expect(shoppingCart.getItemCount()).toEqual(1);
+				expect(shoppingCart.getTotalItemCount()).toEqual(1);
 			});
 		});
 
@@ -75,7 +77,7 @@
 	
 				shoppingCart.emptyCart();
 
-				expect(shoppingCart.getItemCount()).toEqual(0);
+				expect(shoppingCart.getTotalItemCount()).toEqual(0);
 			});
 		});
 

@@ -56,7 +56,7 @@ angular
 		}
 
 		// Get the amount of items currently in cart
-		function getItemCount(){
+		function getTotalItemCount(){
 			return itemCount;
 		}
 		
@@ -132,7 +132,7 @@ angular
 			getTotal: getTotal,
 			getStringTotal: getStringTotal,
 			getEmptyMsg: getEmptyMsg,
-			getItemCount: getItemCount,
+			getTotalItemCount: getTotalItemCount,
 			getItemsInCart: getItemsInCart,
 			addItem: addItem,
 			removeItem: removeItem,
