@@ -1,6 +1,6 @@
-#My Stride Code Test Submission
+# My Stride Code Test Submission
 
-###Special Instructions
+### Special Instructions
 
 Install all dependencies first with 'npm install'.
 
@@ -14,7 +14,7 @@ You can also type 'gulp' if you decide to edit the code and see it live.
 
 Everything else is the same. [Click here](#setup) for the default setup.
 
-###Application Structure
+### Application Structure
 
 Before starting to code I thought about the application requirements, and also considered the blog post on the recommendations
 for this test. I went for simple, maintainable and scalable. The project is divided into four main files
@@ -31,23 +31,23 @@ I believe this approach keeps the application modular and scalable while not bei
 
 However, if the application became way bigger this structure might not be ideal. Further modularizing the components, or separating them by views. For example a "views/items" folder could contain all the components and views for its REST routes. eg:"item/:id" "item/:id/delete", etc.
 
-###Tests
+### Tests
 
 All of the components are tested, and the tests can be found inside of each component's folder. This makes it way easier to find and work with them on the spot as opposed to looking for the tests file, and trying to find the specific test inside of it.
 
-###The Shopping Cart 
+### The Shopping Cart 
 
 This is the meat and bones of the application. It lives in the "shared/factories" folder, and is shared by different controllers. This keeps the controllers pretty clean and simple.  
 
 I divided the methods inside this class into private and public API methods (Just used comments for that). Here you are able to add, remove, and clear the cart. I divided these tasks into smaller tasks to keep the code functional, and flexible.
 
-###CSS 
+### CSS 
 
 All html tags are first normalized using "normalize.css" to create a uniform experience throughout browsers.
 
 I decided also break the sheets down into components. It made it easier to find stylesheets while developing. However this simple structure can make sheets pile up quick, and might make it hard to find them after a while. These can be divided into folders later. For example a folder named "Shopping Cart" for all the stylesheets of this module. "Payment" for payment module sheets etc.
 
-###Thanks!
+### Thanks!
 
 That's pretty much it, I look forward to the review/critique!
 
